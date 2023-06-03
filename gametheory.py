@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import matplotlib.pyplot as plt
 
 def calculate_average(numbers):
     return sum(numbers) / len(numbers)
@@ -93,7 +94,6 @@ for iteration in range(num_iterations):
 print("Best strategy:", best_strategy)
 
 # Plot the best strategy and mark the winning ket
-import matplotlib.pyplot as plt
 plt.bar(range(len(best_strategy)), best_strategy)
 plt.axvline(x=best_fitness, color='red')
 plt.xlabel("State")
