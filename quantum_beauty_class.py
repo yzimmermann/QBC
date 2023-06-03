@@ -31,7 +31,7 @@ class Player:
                 self.state[i] += np.random.uniform(-self.mutation_strength, self.mutation_strength)
                 self.state[i] = max(0, self.state[i])
         self.state /= np.linalg.norm(self.state)
-        self.weights = self.comp_weights
+        self.weights = self.comp_weights()
         self.age = 0
 
     def comp_weights(self):
@@ -72,7 +72,7 @@ class qm_beautycontest:
             #collapse the state of the player and give the fit by the distance to the measured state
             for i in range(self.num_players):
                 prob_player = self.players[i].weights
-                self.fit[i] = np.abs(self.measured_state - np.random.choice(range(self.num_states), p=prob_player))
+                self.fit[i] = np.abs(self.measured_state - np.random.choice(np.arange(self.num_states), p=prob_player))
 
         else:
             for i in range(self.num_players):
@@ -88,23 +88,12 @@ class qm_beautycontest:
         self.tot_state /= np.linalg.norm(self.tot_state)
         self.prob_vec = np.multiply(self.tot_state, np.conjugate(self.tot_state))
 
-        self.measured_state = int(np.round(np.random.choice(range(self.num_states), p=self.prob_vec) * self.p))
+        self.measured_state = int(np.round(np.random.choice(np.arange(self.num_states), p=self.prob_vec) * self.p))
         if self.measured_state >= self.num_states:
             self.measured_state = self.num_states - 1
-        elif self.measured_state < 0:
-            self.measured_state = 0
-
         self.fitness()
 
         #determine the elite by the lowest fitness scores
-        def get_n_smallest_indices(arr, n):
-            indices = np.argpartition(arr, n)[:n]
-            return indices
-        
-        def get_remaining_indices(arr, n):
-            indices = np.argpartition(arr, n)[n:]
-            return indices
-
         sort = np.argsort(self.fit)
         self.elite = sort[:self.num_elite]
         self.loosers = sort[self.num_elite:]
