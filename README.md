@@ -1,0 +1,2 @@
+# QBC
+Quantum Beauty Contest
