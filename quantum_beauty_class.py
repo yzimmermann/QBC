@@ -55,6 +55,8 @@ class qm_beautycontest:
         assert isinstance(fitness_type, str)
         self.fitness_type = fitness_type
         self.num_elite  = num_elite
+        self.max_age = 0
+        self.max_age_strat = np.zeros(num_states)
 
     
     def fitness(self):
@@ -103,6 +105,11 @@ class qm_beautycontest:
 
         for i in self.elite:
             self.players[i].age += 1
+
+            if self.players[i].age > self.max_age:
+                self.max_age = self.players[i].age
+                self.max_age_strat = self.players[i].state
+
 
         for i in self.loosers:
             p_1, p_2 = random.choices(self.elite_states, k=2)
