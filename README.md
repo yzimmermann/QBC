@@ -2,7 +2,7 @@
 
 Welcome to the Quantum Beauty Contest repository! Inspired by the Keynesian Beauty Contest but with a twist of quantum strategies. It aims to explore the concept of strategic thinking in the quantum realm and its implications on decision-making.
 
-![Cover Image](images/cover_image.jpg)
+![Cover Image](images/cover_img.png)
 
 ## Background
 
