@@ -6,7 +6,7 @@ Welcome to the Quantum Beauty Contest repository! Inspired by the Keynesian Beau
 
 ## Background
 
-The Keynesian Beauty Contest is a thought experiment proposed by economist John Maynard Keynes. In this scenario, participants are asked to choose a number between 0 and 100, and the winner is the person whose number is closest to 2/3 of the average of all submitted numbers.
+The Keynesian Beauty Contest is a thought experiment proposed by economist John Maynard Keynes. In this scenario, participants are asked to choose a number between 0 and 100, and the winner is the person whose number is closest to 2/3 (more generally, p > 0) of the average of all submitted numbers.
 
 In the Quantum Beauty Contest, we introduce the concept of quantum strategies. Participants are now allowed to submit quantum states instead of classical numbers. These quantum states can be superpositions of different numbers, allowing for more complex and strategic choices.
 
