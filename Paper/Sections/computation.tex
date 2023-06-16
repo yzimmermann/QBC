@@ -1,8 +1,8 @@
-The strategies of the Quantum Beauty Contest live in a high-dimensional Hilbert space. To effectively explore and optimize these strategies, an evolutionary algorithm is employed. The algorithm utilizes reproduction and mutation, which enables effective sampling of the strategy space to find optimal strategies. A similar algorithm has recently been used to computationally study the prisoner's dilemma \citep{vie2021evolutionary}.\\
+The strategies of the Quantum Beauty Contest reside in a high-dimensional Hilbert space. To effectively explore and optimize these strategies, an evolutionary algorithm is employed. The algorithm utilizes reproduction and mutation, enabling effective sampling of the strategy space to find optimal strategies. A similar algorithm has recently been used to computationally study the prisoner's dilemma \citep{vie2021evolutionary}.\\
 
 \subsection{Reproduction}
 
-Let $\ket{{\text{S}_1}}$ and $\ket{{\text{S}_2}}$ represent the quantum states of two parent strategies. The reproduction operator $$R: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{H}$$ combines these states to generate a new strategy for the offspring:
+Let $\ket{{\text{S}_1}}$ and $\ket{{\text{S}_2}}$ represent the quantum states of two parent strategies. The reproduction operator $R: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{H}$ combines these states to generate a new strategy for the offspring:
 \begin{equation}
 \ket{\text{S}_{\text{offspring}}} = {R}\left(\ket{\text{S}_1}, \ket{{\text{S}_2}}\right) = \mathcal{N}(\ket{\text{S}_1} + \ket{{\text{S}_2}})
 \end{equation}
@@ -15,10 +15,10 @@ The mutation operator introduces variation by perturbing individual strategies a
 
 Let's denote the mutation operator as $M(\ket{S}, \pi, \sigma)$, where $\ket{S}$ is some strategy, $\pi$ is the mutation rate, and $\sigma$ is the mutation strength. The mutation operator can be defined as follows:
 \begin{align}
-&M(\ket{S}, \pi, \sigma) = \ket{S'}\\
-&\ket{S'}_i = \left\{
+&M(\ket{S}, \pi, \sigma) = \ket{S'}\
+&\ket{S'}_i = \left{
 \begin{array}{ll}
-\ket{S}_i + \delta & \text{with probability } \pi \\
+\ket{S}_i + \delta & \text{with probability } \pi \
 \ket{S}_i & \text{with probability } 1 - \pi
 \end{array}
 \right.
@@ -32,22 +32,18 @@ On the other hand, a larger mutation strength results in larger deviations from 
 
 Here is a quick overview of the algorithm employed:
 \begin{enumerate}
-    \item \textbf{Initialize:} For every player i, draw random strategy ket $\ket{S_i} \sim \mathcal{U}_{101}(\left[-1, 1\right]^{101})$ with $\braket{S_i|S_i}=1$    
-    \item \textbf{Simulate Game:} 
-    \subitem \hspace{-0.7cm}a. Draw $\ket{n}$ from $|\braket{\psi|\psi}|^2$ as defined in Eq. \ref{eq:game_ket} and determine winner ket $\ket{w}$
-    \subitem \hspace{-0.7cm}b. Determine fitness of $\ket{\text{S}_i}$ with respect to $\ket{w}$ for every strategy
-    \item \textbf{Reproduction Cycle}
-    \subitem \hspace{-0.7cm}a. Extract fixed amount of elite strategies into new game
-    \subitem \hspace{-0.7cm}b. Select parent strategies $\ket{\text{S}_i}$, $\ket{\text{S}_j}$  $i \neq j$ and form new strategy $M(R(\ket{\text{S}_i}$, $\ket{\text{S}_j}), \pi, \sigma)$
-    \subitem \hspace{-0.7cm}c. Repeat b. until every player has a strategy
-    \item \textbf{Iterate:} Jump to 2. until convergence or fixed number of iterations reached
+\item \textbf{Initialize:} For every player $i$, draw random strategy ket $\ket{S_i} \sim \mathcal{U}_{101}(\left[-1, 1\right]^{101})$ with $\braket{S_i|S_i}=1$.
+\item \textbf{Simulate Game:}
+\subitem \hspace{-0.7cm}a. Draw $\ket{n}$ from $|\braket{\psi|\psi}|^2$ as defined in Eq. \ref{eq:game_ket} and determine winner ket $\ket{w}$.
+\subitem \hspace{-0.7cm}b. Determine the fitness of $\ket{\text{S}_i}$ with respect to $\ket{w}$ for every strategy.
+\item \textbf{Reproduction Cycle}
+\subitem \hspace{-0.7cm}a. Extract a fixed number of elite strategies into the new game.
+\subitem \hspace{-0.7cm}b. Select parent strategies $\ket{\text{S}_i}$ and $\ket{\text{S}_j}$ ($i \neq j$) and form a new strategy $M(R(\ket{\text{S}_i}, \ket{\text{S}_j}), \pi, \sigma)$.
+\subitem \hspace{-0.7cm}c. Repeat b. until every player has a strategy.
+\item \textbf{Iterate:} Jump to step 2. until convergence or a fixed number of iterations is reached.
 \end{enumerate}
 
-For the specific implementation of the game we can make different choices for how we determine $\ket{w}$ as well as the fitness. The implementations can be found in the class functions \texttt{fitness(self)} and \texttt{measurement(self)}, respectively. The full source code can be found in Appendix \ref{apd:first}.\\
-
-
-%(PLOTS OF RUNS)\\
-%(INTERPRETATION)\\
+For the specific implementation of the game, we can make different choices for how we determine $\ket{w}$ as well as the fitness. The implementations can be found in the class functions \texttt{fitness(self)} and \texttt{measurement(self)}, respectively. The full source code can be found in Appendix \ref{apd:first}.
 
 
 
