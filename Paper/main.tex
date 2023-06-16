@@ -1,0 +1,144 @@
+%\documentclass[gray]{jmlr} % test grayscale version
+%\documentclass[tablecaption=bottom]{jmlr}% journal article
+\documentclass[pmlr,twocolumn,10pt]{jmlr} % W&CP article
+
+% The following packages will be automatically loaded:
+% amsmath, amssymb, natbib, graphicx, url, algorithm2e
+
+%\usepackage{rotating}% for sideways figures and tables
+%\usepackage{longtable}% for long tables
+
+% The booktabs package is used by this sample document
+% (it provides \toprule, \midrule and \bottomrule).
+% Remove the next line if you don't require it.
+
+\usepackage{booktabs}
+% The siunitx package is used by this sample document
+% to align numbers in a column by their decimal point.
+% Remove the next line if you don't require it.
+%\usepackage[load-configurations=version-1]{siunitx} % newer version 
+\usepackage{siunitx}
+
+\usepackage{csquotes} %fancy quotes
+\usepackage{braket} %bra-ket formalism
+\usepackage{graphicx,caption} %caption regulation
+
+
+% The following is to recognise equal contribution for authorship
+\newcommand{\equal}[1]{{\hypersetup{linkcolor=black}\thanks{#1}}}
+
+% Define an unnumbered theorem just for this sample document for
+% illustrative purposes:
+\theorembodyfont{\upshape}
+\theoremheaderfont{\scshape}
+\theorempostheader{:}
+\theoremsep{\newline}
+\newtheorem*{note}{Note}
+
+% change the arguments, as appropriate, in the following:
+\jmlrvolume{}
+\jmlryear{2023}
+\jmlrsubmitted{}
+\jmlrpublished{}
+\jmlrworkshop{Controversies in Game Theory} % W&CP title
+
+% The optional argument of \title is used in the header
+\title[Quantum Beauty Contest]{Quantum Beauty Contest}
+
+% Anything in the title that should appear in the main title but 
+% not in the article's header or the volume's table of
+% contents should be placed inside \titletag{}
+
+%\title{Title of the Article\titletag{\thanks{Some footnote}}}
+
+
+% Use \Name{Author Name} to specify the name.
+% If the surname contains spaces, enclose the surname
+% in braces, e.g. \Name{John {Smith Jones}} similarly
+% if the name has a "von" part, e.g \Name{Jane {de Winter}}.
+% If the first letter in the forenames is a diacritic
+% enclose the diacritic in braces, e.g. \Name{{\'E}louise Smith}
+
+% \thanks must come after \Name{...} not inside the argument for
+% example \Name{John Smith}\nametag{\thanks{A note}} NOT \Name{John
+% Smith\thanks{A note}}
+
+% Anything in the name that should appear in the title but not in the 
+% article's header or footer or in the volume's
+% table of contents should be placed inside \nametag{}
+
+% Two authors with the same address
+% \author{%
+%  \Name{Author Name1\nametag{\thanks{A note}}} \Email{abc@sample.com}\and
+%  \Name{Author Name2} \Email{xyz@sample.com}\\
+%  \addr Address
+% }
+
+% Three or more authors with the same address:
+% \author{%
+%  \Name{Author Name1} \Email{an1@sample.com}\\
+%  \Name{Author Name2} \Email{an2@sample.com}\\
+%  \Name{Author Name3} \Email{an3@sample.com}\\
+%  \Name{Author Name4} \Email{an4@sample.com}\\
+%  \Name{Author Name5} \Email{an5@sample.com}\\
+%  \Name{Author Name6} \Email{an6@sample.com}\\
+%  \Name{Author Name7} \Email{an7@sample.com}\\
+%  \Name{Author Name8} \Email{an8@sample.com}\\
+%  \Name{Author Name9} \Email{an9@sample.com}\\
+%  \Name{Author Name10} \Email{an10@sample.com}\\
+%  \Name{Author Name11} \Email{an11@sample.com}\\
+%  \Name{Author Name12} \Email{an12@sample.com}\\
+%  \Name{Author Name13} \Email{an13@sample.com}\\
+%  \Name{Author Name14} \Email{an14@sample.com}\\
+%  \addr Address
+% }
+
+% Authors with different addresses and equal first authors:
+\author{%
+\Name{Philipp Pestlin}\Email{ppestlin@ethz.ch}\\
+\addr D-CHAB, ETH Zürich
+\AND
+% footnotemark[1] is to refer to the \equal footnote
+\Name{Tommaso Antonelli} \Email{tantonelli@ethz.ch}\\
+\addr D-PHYS, ETH Zürich
+\AND
+\Name{Yoel Zimmermann} \Email{yzimmermann@ethz.ch}\\
+\addr D-CHAB, ETH Zürich
+}
+
+\begin{document}
+\maketitle
+% GITHUB REPO: https://github.com/yzimmermann/QBC
+
+\begin{abstract}
+\vspace{-0.6cm}\\
+We introduce a quantum version of the Keynesian Beauty Contest game, based on the superposition of the players' guesses. We further analyze the strategy space of this game by means of an evolutionary algorithm in analogy to level k thinking. Through minor modifications to the game dynamics, we assess various approaches and observe diverse equilibrium outcomes. We identify a particular version of the game that shows a preference for pure states above the state $\ket{0}$ corresponding to the classical Nash equilibrium, dependent on specific parameters.
+In a projective approach we find a phase transition from an initially unordered to an ordered phase. The time of the phase transition is found to be strongly dependent on the random seed. This approach favors almost pure $\ket{0}$ states at equilibrium. We also show chaotic games where our algorithm can not find dominant strategies as well as an approach that converges but also shows slight deviation from the classical Nash equilibrium as the expectated value.
+\end{abstract}
+\section{Introduction}
+\input{Sections/intoduction.tex}
+
+\section{Theory}
+\input{Sections/theory.tex}
+
+\section{Computation}
+\input{Sections/computation.tex}
+
+\section{Results and Discussion}
+\input{chil-template-2023/Sections/results}
+
+\section{Conclusion and outlook}
+\input{Sections/conclusion.tex}
+%\citep{vie2021evolutionary} % Sample Citation
+%\acks{Acknowledgments}
+
+\newpage
+
+\bibliography{bibliography}
+
+\appendix
+
+\section{Supplementary Material}\label{apd:first}
+The source code for the simulation can be found on \url{https://github.com/yzimmermann/QBC}.
+
+\end{document}
