@@ -10,6 +10,9 @@ The Keynesian Beauty Contest is a thought experiment proposed by economist John 
 
 In the Quantum Beauty Contest, we introduce the concept of quantum strategies. Participants are now allowed to submit quantum states instead of classical numbers. These quantum states can be superpositions of different numbers, allowing for more complex and strategic choices.
 
+## Paper
+Find our paper [here.](https://raw.githubusercontent.com/yzimmermann/QBC/7e4c6386a4781b73ed2200c9511dc66155da194c/Paper/Quantum_Beauty_Contest-2.pdf){:target="_blank"}
+
 ## License
 
 This repository is licensed under the [MIT License](LICENSE).
